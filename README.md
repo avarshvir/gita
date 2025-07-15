@@ -42,7 +42,7 @@ print(get_summary(1))
 ```
 3. Get a Specific Verse
 ```
-print(get_verse(1, 1))
+print(get_verse(1, 1.1))
 ```
 4. Get All Verses from a Chapter
 ```
