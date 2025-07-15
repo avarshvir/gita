@@ -1,3 +1,31 @@
+Metadata-Version: 2.4
+Name: gita-py
+Version: 0.1.2
+Summary: A Python package providing Bhagavad Gita summaries and verses.
+Home-page: https://github.com/avarshvir/gita
+Author: Arshvir
+Author-email: avarshvir@gmail.com
+License: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Topic :: Religion
+Classifier: Topic :: Education
+Classifier: Intended Audience :: Education
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: license
+Dynamic: license-file
+Dynamic: requires-python
+Dynamic: summary
+
 # 📖 gita
 
 `gita` is a lightweight Python package providing access to **summaries and verses** from the **Bhagavad Gita**. It allows you to retrieve summaries, verses, chapter titles, and validate content programmatically.

@@ -1,0 +1,14 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+setup.py
+gita/__init__.py
+gita/constant.py
+gita/data.py
+gita/utils.py
+gita_py.egg-info/PKG-INFO
+gita_py.egg-info/SOURCES.txt
+gita_py.egg-info/dependency_links.txt
+gita_py.egg-info/top_level.txt
+tests/test_gita.py
