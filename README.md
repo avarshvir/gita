@@ -1,128 +1,65 @@
-# 📖 gita
+# gita-py
 
-`gita` is a lightweight Python package providing access to **summaries and verses** from the **Bhagavad Gita**. It allows you to retrieve summaries, verses, chapter titles, and validate content programmatically.
+**Bhagavad Gita in Python** — all 700 verses across 18 chapters, in both English and Sanskrit (Devanagari), with a clean integer-keyed API.
 
----
-
-## 🌟 Features
-
-- 📚 Get summary of a chapter
-- 🔍 Fetch a specific verse
-- 📖 Get all verses in a chapter
-- ✅ Validate chapters and verses
-- 🏷️ Retrieve chapter titles
-
----
-
-## 📦 Installation
-
-Clone this repository and install locally using:
+## Install
 
 ```bash
-git clone https://github.com/avarshvir/gita.git
-cd gita
-```
-## 🧠 Usage
-1. Import the functions
-```
-from gita.utils import (
-    get_summary,
-    get_verse,
-    get_all_verses,
-    list_available_summaries,
-    is_valid_chapter,
-    is_valid_verse,
-    get_chapter_title
-)
-```
-2. Get Chapter Summary
-```
-print(get_summary(1))
-
-```
-3. Get a Specific Verse
-```
-print(get_verse(1, 1.1))
-```
-4. Get All Verses from a Chapter
-```
-verses = get_all_verses(1)
-for verse_number, verse_text in verses.items():
-    print(f"{verse_number}: {verse_text}")
-```
-5. List Available Summaries
-```
-print(list_available_summaries())
-# Output: [1, 2, 3, 4]
-```
-6. Validate Chapter or Verse
-```
-print(is_valid_chapter(1))  # True
-print(is_valid_verse(1, 1))  # True or False
-```
-7. Get Chapter Title
-```
-print(get_chapter_title(1))
-# Output: Arjuna Vishada Yoga - The Yoga of Arjuna's Dejection
+pip install gita-py
 ```
 
-## 🧪 Running Tests
-To run the unit tests, from the project root:
-```
-python -m unittest discover tests
-```
+## Quick start
 
-## 💡 Applications in ML/AI
-```
-The gita package can also serve as a semantic, philosophical, or ethical dataset for NLP and AI applications, including:
-- 🧘‍♂️ **Spiritual NLP:** Use summaries/verses for language modeling, text classification, or chatbot responses in spiritual/ethical domains.
+```python
+from gita import get_verse, get_sanskrit_verse, get_verse_full, get_chapter_summary
 
-- 📊 **Topic Modeling:** Apply unsupervised learning (like LDA) to explore themes across chapters and verses.
+# English meaning
+print(get_verse(2, 47))
+# "You have a right to perform your prescribed duties, but you are not
+#  entitled to the fruits of your actions …"
 
-- 🤖 **Conversational AI:** Integrate with chatbots or voice assistants to answer questions from the Gita.
+# Sanskrit (Devanagari)
+print(get_sanskrit_verse(2, 47))
+# कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।
+# मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥
 
-- 🧠 **Fine-Tuning LLMs:** Fine-tune transformer models on Bhagavad Gita content for custom applications like question answering, summarization, or translation.
+# Both at once
+v = get_verse_full(4, 7)
+# {"chapter": 4, "verse": 7, "chapter_name": "…", "sanskrit": "…", "english": "…"}
 
-- 🧘 **Emotion Detection:** Train sentiment analysis models on Gita texts for understanding philosophical tone and emotion.
+# Chapter summary
+print(get_chapter_summary(18))
 
-- 📚 **Text Embeddings:** Generate vector embeddings for each verse/summary to use in semantic search or recommender systems.
+# Search
+results = search_english("renunciation")
+for r in results[:3]:
+    print(r["chapter"], r["verse"], r["text"][:60])
 
-With a structured dataset and utilities, gita can be a powerful component in building ethically aware and spiritually aligned AI systems.
-
-```
-
-## 📁 Project Structure
-```
-gita/
-│
-├── gita/
-│   ├── __init__.py
-│   ├── utils.py
-│   ├── data.py
-│   └── constant.py
-│
-├── tests/
-│   └── test_gita.py
-│
-├── setup.py
-├── README.md
-├── pyproject.toml
-└── MANIFEST.in
+# Random verse
+print(get_random_verse())
 ```
 
-## 📜 License
-This project is licensed under the MIT License.
+## API reference
 
-## 🙏 Acknowledgements
-- Inspired by the sacred Bhagavad Gita
-- Developed with ❤️ by Arshvir
+| Function | Returns |
+|---|---|
+| `get_verse(ch, v)` | English meaning |
+| `get_sanskrit_verse(ch, v)` | Sanskrit Devanagari text |
+| `get_verse_full(ch, v)` | Dict with both + metadata |
+| `get_chapter(ch)` | All verses + summary for chapter |
+| `get_chapter_summary(ch)` | Chapter summary string |
+| `get_chapter_name(ch)` | Chapter title (Sanskrit/English) |
+| `get_all_chapters()` | Metadata for all 18 chapters |
+| `search_english(query)` | List of matching verse dicts |
+| `get_random_verse()` | Random full verse dict |
+| `get_quotes()` | Curated list of notable quotes |
+| `verse_count(ch)` | Number of verses in chapter |
 
-## 🚀 Future Plans
-- Add all 18 chapter summaries
-- Include all verses from all chapters
-- Add audio and image support
-- Build a Streamlit/Flask interface
-- Extend NLP/ML capabilities for philosophical Q&A
+All chapter/verse keys are plain **integers** — no float keys, no collisions.
 
+## Coverage
 
-
+- **18 chapters**, **700 verses**
+- English: scholarly translations
+- Sanskrit: traditional Devanagari text
+- Chapter summaries for all 18 chapters
